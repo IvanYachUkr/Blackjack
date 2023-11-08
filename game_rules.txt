@@ -1,0 +1,35 @@
+Welcome to the Game of 21!
+
+RULES:
+The goal of the game is to achieve a hand value of 21 or as close to it as possible without going over. If your hand value exceeds 21, you "bust" and lose the round.
+
+COMMANDS:
+1. hit - Draw another card from the deck.
+   Example: hit
+
+2. stand - End your turn and stick with your current hand value.
+   Example: stand
+
+GAME STATE FORMAT:
+The game state will be displayed as follows:
+
+Player ID: [Your Unique Player ID]
+Your Hand: [List of your cards] (Total Value: [Sum of your card values])
+Dealer's Hand: [List of dealer's cards, with the first card hidden] (Total Value: [Sum of dealer's card values, with the first card's value excluded])
+Current Turn: [Whose turn is it]
+Game Status: [Ongoing, Player Won, Player Lost, or Draw]
+
+EXAMPLE GAME STATE MESSAGE:
+Player ID: 123e4567-e89b-12d3-a456-426614174000
+Your Hand: 10 of Hearts, 6 of Spades (Total Value: 16)
+Dealer's Hand: Hidden, 7 of Diamonds (Total Value: 7)
+Current Turn: Player
+Game Status: Ongoing
+
+STATISTICS:
+- Number of Rounds Played: [Total number of rounds played]
+- Number of Rounds Won: [Total number of rounds won by the player]
+- Number of Rounds Lost: [Total number of rounds lost by the player]
+- Number of Draws: [Total number of draws]
+
+Good luck, and may the odds be ever in your favor!

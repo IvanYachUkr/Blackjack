@@ -1,0 +1,63 @@
+Client-Side Documentation for the Game of 21
+============================================
+
+Overview:
+---------
+The client-side application for the Game of 21 is designed to provide an interactive interface for the player to play the card game commonly known as Blackjack. The application communicates with a server that handles the game logic, player sessions, and maintains the state of the game.
+
+Architecture:
+-------------
+The client application is structured into several components, each responsible for a part of the overall functionality:
+
+1. ConnectionManager:
+   - Handles all network connections to the server.
+   - Manages sending and receiving of messages over the network.
+
+2. UserInputHandler:
+   - Manages user input from the console.
+   - Captures player commands and passes them to the CommunicationManager.
+
+3. MessageFormatter:
+   - Formats the messages to include the player's unique ID along with the command.
+
+4. DisplayManager:
+   - Handles the output to the console.
+   - Displays the game state and messages received from the server.
+
+5. CommunicationManager:
+   - Facilitates communication between the ConnectionManager and the server.
+   - Sends formatted messages and receives responses.
+
+6. GameInitializer:
+   - Performs initial setup and fetches game rules from the server.
+
+7. ClientApp (Main Class):
+   - Initializes and orchestrates the components mentioned above.
+   - Manages the main game loop and user interactions.
+
+Working:
+--------
+- Upon launch, ClientApp initializes all components.
+- ConnectionManager establishes a connection to the server at a predefined address and port.
+- GameInitializer sends a "start" command to the server and receives the game rules, which are displayed by DisplayManager.
+- UserInputHandler prompts the player for commands ("hit" or "stand").
+- MessageFormatter formats these commands along with the player's ID.
+- CommunicationManager sends the formatted command to the server and awaits a response.
+- The server processes the command, updates the game state, and sends back a response.
+- DisplayManager shows the updated game state or results.
+- This process repeats until the player decides to exit the game by entering the "quit" command.
+
+Server Communication:
+---------------------
+- Communication with the server is done using TCP sockets.
+- Messages are sent as plain text following a simple protocol: [Player ID]:[Command]
+- The server responds with the game state or results in a text format, as defined in 'game_rules.txt'.
+- The client processes and displays this information to the player.
+
+Statistics:
+-----------
+The client tracks no statistics by itself. All statistics and game history are managed by the server and communicated to the client in the game state messages.
+
+Conclusion:
+-----------
+This client application provides a streamlined interface for playing the Game of 21, with all complex game logic offloaded to the server. It ensures a clear separation of concerns and a robust protocol for server communication.

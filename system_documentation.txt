@@ -1,0 +1,97 @@
+System Documentation for the Game of 21
+=======================================
+
+System Overview:
+----------------
+The Game of 21, also known as Blackjack, is implemented as a client-server application. The server handles the game logic, maintains the state of each game session, and communicates with multiple clients concurrently. Clients are responsible for user interaction, sending commands to the server, and displaying the game state.
+
+Server Architecture:
+--------------------
+The server is composed of several key components that work together to manage gameplay and client communication:
+
+1. ServerApp:
+   - Listens for incoming client connections on a specified port.
+   - For each connection, spawns a ClientHandler in a new thread, enabling concurrent client management.
+
+2. ClientHandler:
+   - Handles communication with a connected client.
+   - Uses RequestHandler and ResponseHandler to process requests and send responses.
+
+3. RequestHandler:
+   - Parses incoming client messages.
+   - Retrieves or creates GameSession instances based on client IDs.
+   - Passes commands to the CommandProcessor for action execution.
+
+4. ResponseHandler:
+   - Formats and sends game state information back to the client.
+
+5. GameSession:
+   - Represents a single game of 21.
+   - Maintains game state including the player's and dealer's hands, the deck, and game statistics.
+
+6. CommandProcessor:
+   - Interprets and executes game commands within a GameSession.
+
+7. Game Entities:
+   - Include Deck, Card, Hand, Player, and GameStats.
+   - Support the game logic by providing structures and actions related to card management and gameplay.
+
+Client Architecture:
+--------------------
+The client consists of multiple components designed to interact with the user and the server:
+
+1. ClientApp:
+   - Initializes the client-side system and controls the main game loop.
+   - Handles user commands and displays game information.
+
+2. ConnectionManager:
+   - Manages the network connection to the server.
+   - Sends and receives messages to and from the server.
+
+3. UserInputHandler:
+   - Captures user input from the console.
+
+4. MessageFormatter:
+   - Formats the commands to be sent to the server, including the player ID.
+
+5. DisplayManager:
+   - Presents the game state and server messages to the user.
+
+6. CommunicationManager:
+   - Facilitates communication between ConnectionManager and server.
+
+7. GameInitializer:
+   - Retrieves initial game information such as rules and instructions from the server.
+
+System Workflow:
+----------------
+1. Server starts and listens for connections.
+2. Client starts, connects to the server, and receives initial game rules.
+3. User enters commands which are sent to the server by the client.
+4. Server processes the commands and updates the game state.
+5. Server sends back the updated game state which the client displays.
+6. Steps 3-5 repeat until the game ends or the user exits.
+
+Concurrency:
+------------
+- The server uses a thread-per-client model for handling concurrent connections.
+- ClientHandlers work independently, ensuring isolated session management.
+
+Game Logic:
+-----------
+- The game follows standard Blackjack rules.
+- GameSessions handle the logic for card dealing, player actions (hit/stand), and determine round outcomes.
+
+Communication Protocol:
+-----------------------
+- Messages are exchanged in plain text using a simple protocol: [PlayerID]:[Command].
+- The server sends back the game state and messages in a formatted string.
+
+Documentation and Maintenance:
+------------------------------
+- All classes include JavaDoc comments explaining functionality and usage.
+- The system is designed to be modular for easy maintenance and extensibility.
+
+Conclusion:
+-----------
+The Game of 21 system provides a complete implementation of the Blackjack game, allowing users to play through a console-based client application while the server manages the game logic and state. The system is built to be robust, supporting multiple concurrent users with a clear communication protocol.

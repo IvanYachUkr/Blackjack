@@ -1,0 +1,64 @@
+Server-Side Documentation for the Game of 21
+============================================
+
+Overview:
+---------
+The server-side application for the Game of 21 handles all the game logic, client sessions, and communication between the server and the clients. The server is agnostic of the client's details and only processes game commands, managing game states accordingly.
+
+Architecture:
+-------------
+The server is designed around several core components:
+
+1. ServerApp:
+   - The main server class that listens for incoming connections on a specified port.
+   - For each client connection, it spawns a new ClientHandler thread, providing concurrency.
+
+2. ClientHandler:
+   - Handles interactions with the client over a socket connection.
+   - Utilizes the RequestHandler to process commands and the ResponseHandler to send back messages.
+
+3. RequestHandler:
+   - Parses the incoming request to extract the player ID and the command.
+   - Manages the association between player IDs and their respective GameSessions.
+   - Delegates command processing to the CommandProcessor.
+
+4. ResponseHandler:
+   - Formats and sends the game state updates and other responses back to the client.
+
+5. GameSession:
+   - Represents an individual game session with a unique player.
+   - Contains the game logic and state such as the player's hand, the dealer's hand, and the deck of cards.
+
+6. CommandProcessor:
+   - Translates client commands into actions by invoking methods on the GameSession.
+
+7. Game Entities (Deck, Card, Hand, Player, GameStats):
+   - Represent the core elements of the game.
+   - Deck manages multiple decks of cards and shuffling.
+   - Card represents a playing card.
+   - Hand manages a collection of cards for a player or the dealer.
+   - Player represents the actions of a player in the game.
+   - GameStats tracks the statistics of the game session.
+
+Concurrency:
+------------
+- The server is capable of handling multiple clients simultaneously by spawning a new thread for each client connection.
+- The ConcurrentHashMap ensures that access to the GameSessions is thread-safe.
+- Each ClientHandler operates independently, managing its own input and output streams.
+
+Game Flow:
+----------
+- Upon a client's connection, the ServerApp creates a new ClientHandler.
+- The ClientHandler listens for messages from the client and passes them to the RequestHandler.
+- The RequestHandler parses the messages, retrieves the corresponding GameSession, and processes the command.
+- The CommandProcessor updates the GameSession based on the command.
+- The ResponseHandler sends the updated game state back to the client.
+- The cycle repeats with each new message from the client.
+
+Documentation:
+--------------
+Each class and method should have JavaDoc comments explaining its purpose, methods, and usage. Any complex logic, such as shuffling in the Deck class, should be documented in detail.
+
+Conclusion:
+-----------
+The server-side application is designed to be modular, with a clear separation of concerns, ensuring maintainability and scalability. It provides all necessary functionalities to manage and play games of 21 with multiple clients concurrently.

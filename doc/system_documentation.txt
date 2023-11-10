@@ -3,11 +3,16 @@ System Documentation for the Game of 21
 
 System Overview:
 ----------------
-The Game of 21, also known as Blackjack, is implemented as a client-server application. The server handles the game logic, maintains the state of each game session, and communicates with multiple clients concurrently. Clients are responsible for user interaction, sending commands to the server, and displaying the game state.
+The Game of 21, also known as Blackjack, is implemented as a client-server
+application. The server handles the game logic, maintains the state of each
+game session, and communicates with multiple clients concurrently. Clients are
+responsible for user interaction, sending commands to the server, and
+displaying the game state.
 
 Server Architecture:
 --------------------
-The server is composed of several key components that work together to manage gameplay and client communication:
+The server is composed of several key components that work together to manage
+gameplay and client communication:
 
 1. ServerApp:
    - Listens for incoming client connections on a specified port.
@@ -94,4 +99,7 @@ Documentation and Maintenance:
 
 Conclusion:
 -----------
-The Game of 21 system provides a complete implementation of the Blackjack game, allowing users to play through a console-based client application while the server manages the game logic and state. The system is built to be robust, supporting multiple concurrent users with a clear communication protocol.
+The Game of 21 system provides a complete implementation of the Blackjack game,
+allowing users to play through a console-based client application while the
+server manages the game logic and state. The system is built to be robust,
+supporting multiple concurrent users with a clear communication protocol.

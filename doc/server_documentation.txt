@@ -3,7 +3,10 @@ Server-Side Documentation for the Game of 21
 
 Overview:
 ---------
-The server-side application for the Game of 21 handles all the game logic, client sessions, and communication between the server and the clients. The server is agnostic of the client's details and only processes game commands, managing game states accordingly.
+The server-side application for the Game of 21 handles all the game logic,
+client sessions, and communication between the server and the clients. The
+server is agnostic of the client's details and only processes game commands,
+managing game states accordingly.
 
 Architecture:
 -------------
@@ -57,8 +60,13 @@ Game Flow:
 
 Documentation:
 --------------
-Each class and method should have JavaDoc comments explaining its purpose, methods, and usage. Any complex logic, such as shuffling in the Deck class, should be documented in detail.
+Each class and method should have JavaDoc comments explaining its purpose,
+methods, and usage. Any complex logic, such as shuffling in the Deck class,
+should be documented in detail.
 
 Conclusion:
 -----------
-The server-side application is designed to be modular, with a clear separation of concerns, ensuring maintainability and scalability. It provides all necessary functionalities to manage and play games of 21 with multiple clients concurrently.
+The server-side application is designed to be modular, with a clear separation
+of concerns, ensuring maintainability and scalability. It provides all
+necessary functionalities to manage and play games of 21 with multiple clients
+concurrently.

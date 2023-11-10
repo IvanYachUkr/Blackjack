@@ -1,7 +1,9 @@
 Welcome to the Game of 21!
 
 RULES:
-The goal of the game is to achieve a hand value of 21 or as close to it as possible without going over. If your hand value exceeds 21, you "bust" and lose the round.
+The goal of the game is to achieve a hand value of 21 or as close to it as
+possible without going over. If your hand value exceeds 21, you "bust" and lose
+the round.
 
 COMMANDS:
 1. hit - Draw another card from the deck.

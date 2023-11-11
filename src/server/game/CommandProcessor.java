@@ -1,3 +1,5 @@
+package game;
+
 public class CommandProcessor {
     private final GameSession gameSession;
 
@@ -17,12 +19,12 @@ public class CommandProcessor {
                 return "Error: Unknown command.";
         }
 
-        if (gameSession.isPlayerTurn()) {
+        if (gameSession.playerTurn) {
             return gameSession.getGameState();
         } else {
             // Automatically play for the dealer if it's their turn
             gameSession.dealerPlays();
-            return gameSession.getGameState() + "\n" + gameSession.getRoundOutcome();
+            return gameSession.getGameState() + "\n" ;//+ gameSession.getRoundOutcome();
         }
     }
 }

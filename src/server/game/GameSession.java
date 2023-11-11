@@ -1,3 +1,5 @@
+package game;
+
 import gameentities.Deck;
 import gameentities.GameStats;
 import gameentities.Player;
@@ -7,7 +9,7 @@ public class GameSession {
     private final Player player;
     private final Player dealer;
     private final GameStats stats;
-    private boolean playerTurn;
+    boolean playerTurn;
 
     public GameSession() {
         this.deck = new Deck();
@@ -45,7 +47,7 @@ public class GameSession {
         }
     }
 
-    private void dealerPlays() {
+    void dealerPlays() {
         while (dealer.getHand().getHandValue() < 17) {
             dealer.hit(deck.draw());
         }

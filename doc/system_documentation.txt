@@ -24,18 +24,18 @@ gameplay and client communication:
 
 3. RequestHandler:
    - Parses incoming client messages.
-   - Retrieves or creates GameSession instances based on client IDs.
-   - Passes commands to the CommandProcessor for action execution.
+   - Retrieves or creates game.GameSession instances based on client IDs.
+   - Passes commands to the game.CommandProcessor for action execution.
 
 4. ResponseHandler:
    - Formats and sends game state information back to the client.
 
-5. GameSession:
+5. game.GameSession:
    - Represents a single game of 21.
    - Maintains game state including the player's and dealer's hands, the deck, and game statistics.
 
-6. CommandProcessor:
-   - Interprets and executes game commands within a GameSession.
+6. game.CommandProcessor:
+   - Interprets and executes game commands within a game.GameSession.
 
 7. Game Entities:
    - Include Deck, Card, Hand, Player, and GameStats.

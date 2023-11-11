@@ -23,17 +23,17 @@ The server is designed around several core components:
 3. RequestHandler:
    - Parses the incoming request to extract the player ID and the command.
    - Manages the association between player IDs and their respective GameSessions.
-   - Delegates command processing to the CommandProcessor.
+   - Delegates command processing to the game.CommandProcessor.
 
 4. ResponseHandler:
    - Formats and sends the game state updates and other responses back to the client.
 
-5. GameSession:
+5. game.GameSession:
    - Represents an individual game session with a unique player.
    - Contains the game logic and state such as the player's hand, the dealer's hand, and the deck of cards.
 
-6. CommandProcessor:
-   - Translates client commands into actions by invoking methods on the GameSession.
+6. game.CommandProcessor:
+   - Translates client commands into actions by invoking methods on the game.GameSession.
 
 7. Game Entities (Deck, Card, Hand, Player, GameStats):
    - Represent the core elements of the game.
@@ -53,8 +53,8 @@ Game Flow:
 ----------
 - Upon a client's connection, the ServerApp creates a new ClientHandler.
 - The ClientHandler listens for messages from the client and passes them to the RequestHandler.
-- The RequestHandler parses the messages, retrieves the corresponding GameSession, and processes the command.
-- The CommandProcessor updates the GameSession based on the command.
+- The RequestHandler parses the messages, retrieves the corresponding game.GameSession, and processes the command.
+- The game.CommandProcessor updates the game.GameSession based on the command.
 - The ResponseHandler sends the updated game state back to the client.
 - The cycle repeats with each new message from the client.
 

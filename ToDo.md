@@ -24,8 +24,8 @@ This file outlines the recommended file system structure for the Game of 21 proj
   - `ClientHandler.java`
   - `RequestHandler.java`
   - `ResponseHandler.java`
-  - `CommandProcessor.java`
-  - `GameSession.java`
+  - `game.CommandProcessor.java`
+  - `game.GameSession.java`
   - `/server/gameentities`: Contains game entity classes.
     - `Deck.java`
     - `Card.java`

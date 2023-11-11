@@ -1,3 +1,5 @@
+package gameentities;
+
 public class Player {
     private final Hand hand;
 

@@ -8,7 +8,7 @@ public class ClientApp {
     private final DisplayManager displayManager;
     private final CommunicationManager communicationManager;
     private final MessageFormatter messageFormatter;
-    private final GameInitializer gameInitializer;
+    private final GameInitialiser gameInitializer;
 
     public ClientApp() {
         String playerId = generateUniqueID();
@@ -17,7 +17,7 @@ public class ClientApp {
         displayManager = new DisplayManager();
         messageFormatter = new MessageFormatter(playerId);
         communicationManager = new CommunicationManager(connectionManager, messageFormatter);
-        gameInitializer = new GameInitializer(communicationManager, displayManager);
+        gameInitializer = new GameInitialiser(communicationManager, displayManager);
     }
 
     private String generateUniqueID() {
@@ -29,7 +29,7 @@ public class ClientApp {
             connectionManager.openConnection();
             gameInitializer.initializeGame(); // Initialize game and fetch rules
 
-            System.out.println("Connected to the game server with Player ID: " + messageFormatter.getPlayerId());
+            //System.out.println("Connected to the game server with Player ID: " + messageFormatter.getPlayerId());
             String command;
             do {
                 System.out.println("Enter command (type '" + QUIT_COMMAND + "' to exit): ");

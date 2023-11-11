@@ -4,7 +4,8 @@ public class GameInitialiser {
     private final CommunicationManager communicationManager;
     private final DisplayManager displayManager;
 
-    public GameInitializer(CommunicationManager communicationManager, DisplayManager displayManager) {
+    // Constructor that initializes the final fields
+    public GameInitialiser(CommunicationManager communicationManager, DisplayManager displayManager) {
         this.communicationManager = communicationManager;
         this.displayManager = displayManager;
     }

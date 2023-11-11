@@ -1,3 +1,5 @@
+package gameentities;
+
 public class GameStats {
     private int wins;
     private int losses;

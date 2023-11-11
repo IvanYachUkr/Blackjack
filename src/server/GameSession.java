@@ -1,3 +1,7 @@
+import gameentities.Deck;
+import gameentities.GameStats;
+import gameentities.Player;
+
 public class GameSession {
     private final Deck deck;
     private final Player player;

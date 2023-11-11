@@ -1,7 +1,7 @@
 # IMMEDIATE TASKS
 
-- [ ] # 1. Make a code run
-- [ ] # 2. Reformat filesystem structure of the project :
+- [x] # 1. Make a code run
+- [x] # 2. Reformat filesystem structure of the project :
 
 # Project File System Structure for the Game of 21
 
@@ -75,6 +75,12 @@ This file outlines the recommended file system structure for the Game of 21 proj
 
 # Main tasks
 
+## New tasks
+- [ ] Implement the logic to send the rules of the game when client connects to the server
+- [ ] GameSession class needs the logic to handle turn in addition to handling gameState in general, right now the call of this method is commented out in CommandProcessor class
+- [ ] Implement robust error checks to ensure correct communication between a client and a server
+
+## Old tasks
 - [ ] ## Implement proper logging and error control
 - [ ] ## Add unit tests (?)
 - [ ] ## Implement interfaces for the server side general classes

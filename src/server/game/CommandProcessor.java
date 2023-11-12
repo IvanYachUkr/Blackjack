@@ -11,10 +11,16 @@ public class CommandProcessor {
         switch (command.toLowerCase()) {
             case "hit":
                 gameSession.hit();
+                if (gameSession.isRoundEnded() || gameSession.player.isBusted()) {
+                    return gameSession.getFinalStateAndOutcome();
+                }
                 break;
             case "stand":
                 gameSession.stand();
-                break;
+                return gameSession.getFinalStateAndOutcome();
+            case "round":
+                gameSession.startNewRoundManually();
+                return gameSession.getGameState();
             case "start":
                 return startGame();
             default:
@@ -24,11 +30,15 @@ public class CommandProcessor {
         if (gameSession.playerTurn) {
             return gameSession.getGameState();
         } else {
-            // Automatically play for the dealer if it's their turn
             gameSession.dealerPlays();
-            return gameSession.getGameState() + "\n"; //+ gameSession.getRoundOutcome();
+            if (gameSession.isRoundEnded()) {
+                return gameSession.getFinalStateAndOutcome();
+            } else {
+                return gameSession.getGameState();
+            }
         }
     }
+
 
     private String startGame() {
         GameRulesHandler rulesHandler = new GameRulesHandler();

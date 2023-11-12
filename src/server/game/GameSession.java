@@ -6,7 +6,7 @@ import gameentities.Player;
 
 public class GameSession {
     private final Deck deck;
-    private final Player player;
+    final Player player;
     private final Player dealer;
     private final GameStats stats;
     boolean playerTurn;
@@ -21,6 +21,26 @@ public class GameSession {
         startNewRound();
     }
 
+    public boolean isRoundEnded() {
+        return !playerTurn && !dealer.isBusted() && dealer.getHand().getHandValue() >= 17;
+    }
+
+    public String getFinalStateAndOutcome() {
+        String finalState = getGameState();
+        String outcome;
+        if (player.isBusted()) {
+            outcome = "Player Busted. Dealer Wins.";
+        } else if (dealer.isBusted() || player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
+            outcome = "Player Wins.";
+        } else if (player.getHand().getHandValue() < dealer.getHand().getHandValue()) {
+            outcome = "Dealer Wins.";
+        } else {
+            outcome = "It's a Draw.";
+        }
+        return finalState + "\nOutcome: " + outcome;
+    }
+
+
     private void startNewRound() {
         player.clearHand();
         dealer.clearHand();
@@ -30,14 +50,19 @@ public class GameSession {
         dealer.hit(deck.draw());
     }
 
+
     public void hit() {
         if (playerTurn) {
             player.hit(deck.draw());
             if (player.isBusted()) {
                 playerTurn = false;
-                endRound(false);
+                // Do not call endRound here, just change the playerTurn to false
             }
         }
+    }
+    public void startNewRoundManually() {
+        startNewRound();
+        playerTurn = true;
     }
 
     public void stand() {
@@ -74,7 +99,7 @@ public class GameSession {
         } else {
             stats.recordLoss();
         }
-        startNewRound();
+        // Do not start a new round here
     }
 
     public String getGameState() {
@@ -82,11 +107,9 @@ public class GameSession {
         sb.append("Player Hand: ").append(player.getHand().toString());
         sb.append("\nDealer Hand: ");
         if (playerTurn) {
-            // Hide the dealer's first card and show only the second card
             sb.append("[Hidden], ");
             sb.append(dealer.getHand().getCards().get(1));
         } else {
-            // Show all dealer's cards
             sb.append(dealer.getHand().toString());
         }
         sb.append("\nPlayer Turn: ").append(playerTurn ? "Yes" : "No");

@@ -31,11 +31,21 @@ public class ConnectionManager {
 
     public String receiveFromServer() throws IOException {
         if (in != null) {
-            return in.readLine();
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = in.readLine()) != null) {
+                // Check for the end-of-message marker before appending the line
+                if (line.equals("END_OF_MESSAGE")) {
+                    break;
+                }
+                response.append(line).append("\n");
+            }
+            return response.toString();
         } else {
             throw new IOException("Connection is not open, cannot receive message");
         }
     }
+
 
     public void closeConnection() {
         try {

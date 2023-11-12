@@ -8,7 +8,10 @@ public class ResponseHandler {
     }
 
     public void send(String message) {
-        out.println(message);
+        // Append the "END_OF_MESSAGE" marker to the message
+        String modifiedMessage = message + "\nEND_OF_MESSAGE";
+        out.println(modifiedMessage);
         out.flush();
     }
 }
+

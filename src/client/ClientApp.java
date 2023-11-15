@@ -10,9 +10,9 @@ public class ClientApp {
     private final MessageFormatter messageFormatter;
     private final GameInitialiser gameInitializer;
 
-    public ClientApp() {
+    public ClientApp(String[] servinfo) {
         String playerId = generateUniqueID();
-        connectionManager = new ConnectionManager();
+        connectionManager = new ConnectionManager(servinfo);
         userInputHandler = new UserInputHandler();
         displayManager = new DisplayManager();
         messageFormatter = new MessageFormatter(playerId);
@@ -48,7 +48,7 @@ public class ClientApp {
     }
 
     public static void main(String[] args) {
-        ClientApp clientApp = new ClientApp();
+        ClientApp clientApp = new ClientApp(args);
         clientApp.startGame();
     }
 }

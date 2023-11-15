@@ -17,6 +17,7 @@ MANIFEST_FILE = MANIFEST.MF
 
 serv: $(SERVER_FILES)
 	$(CC) $(CFLAGS_S) $^
+	cp server/game/game_rules_blackjack.txt $(SERV_CLSS_DIR)game/
 
 clnt: $(CLIENT_FILES)
 	$(CC) $(CFLAGS_C) $^

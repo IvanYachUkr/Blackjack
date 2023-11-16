@@ -55,7 +55,7 @@ public class CommandProcessor {
 
     private String getStats() {
         GameStats stats = gameSession.getStats();
-        return "Rounds played:\t" + stats.getRoundsPlayed() +
+        return "Rounds Played:\t" + stats.getRoundsPlayed() +
                "\nRounds Won:\t\t" + stats.getWins() +
                "\nRounds Lost:\t" + stats.getLosses() +
                "\nDraws:\t\t\t" + stats.getDraws();

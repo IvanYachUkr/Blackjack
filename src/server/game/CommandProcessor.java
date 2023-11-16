@@ -1,5 +1,7 @@
 package game;
 
+import gameentities.GameStats;
+
 public class CommandProcessor {
     private final GameSession gameSession;
 
@@ -22,8 +24,10 @@ public class CommandProcessor {
                 return gameSession.getGameState();
             case "start":
                 return startGame();
+            case "stat":
+                return getStats();
             case "help":
-                return "Commands: h[it], s[tand], r[ound], quit, help";
+                return "Commands: h[it], s[tand], r[ound], stat, quit, help";
             default:
                 return "Error: Unknown command.";
         }
@@ -44,10 +48,16 @@ public class CommandProcessor {
         GameRulesHandler rulesHandler = new GameRulesHandler();
         String gameRules = rulesHandler.getGameRules();
 
-        // Clear data from the previous round
-        gameSession.startNewRoundManually();
         // Combine the game rules and the initial game state
         String initialState = gameSession.getGameState();
         return gameRules + "\n\n" + initialState;
+    }
+
+    private String getStats() {
+        GameStats stats = gameSession.getStats();
+        return "Rounds played:\t" + stats.getRoundsPlayed() +
+               "\nRounds Won:\t\t" + stats.getWins() +
+               "\nRounds Lost:\t" + stats.getLosses() +
+               "\nDraws:\t\t\t" + stats.getDraws();
     }
 }

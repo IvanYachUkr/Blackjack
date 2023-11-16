@@ -46,6 +46,7 @@ public class ClientHandler implements Runnable {
             }
         }
     }
+
     private void disconnectLog(String client_ip, int client_port) {
         LocalDateTime localtime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(

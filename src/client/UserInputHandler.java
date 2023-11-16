@@ -8,7 +8,7 @@ public class UserInputHandler {
     }
 
     public String getUserCommand() {
-        System.out.print("Enter command: ");
+        System.out.print("> ");
         return scanner.nextLine();
     }
 }

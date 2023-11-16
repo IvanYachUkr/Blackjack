@@ -56,6 +56,7 @@ public class GameSession {
             player.hit(deck.draw());
             if (player.isBusted()) {
                 playerTurn = false;
+                stats.recordLoss();
                 // Do not call endRound here, just change the playerTurn to false
             }
         }

@@ -20,8 +20,16 @@ public class CommandProcessor {
                 gameSession.stand();
                 return gameSession.getFinalStateAndOutcome();
             case "round": case "r":
+                String outcome;
                 gameSession.startNewRoundManually();
-                return gameSession.getGameState();
+                if (gameSession.player.isBlackJack()) {
+                    outcome = gameSession.getFinalStateAndOutcome();
+
+                }
+                else{
+                    outcome = gameSession.getGameState();
+                }
+                return outcome;
             case "start":
                 return startGame();
             case "stat":
@@ -49,7 +57,13 @@ public class CommandProcessor {
         String gameRules = rulesHandler.getGameRules();
 
         // Combine the game rules and the initial game state
-        String initialState = gameSession.getGameState();
+        String initialState;
+
+        if (gameSession.player.isBlackJack()) {
+            initialState = gameSession.getFinalStateAndOutcome();
+        } else {
+            initialState = gameSession.getGameState();
+        }
         return gameRules + "\n\n" + initialState;
     }
 

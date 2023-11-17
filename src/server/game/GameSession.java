@@ -30,9 +30,16 @@ public class GameSession {
         String outcome;
         if (player.isBusted()) {
             outcome = "Player Busted. Dealer Wins.";
-        } else if (dealer.isBusted() || player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
+        } else if (player.isBlackJack()) {
+            outcome = "Player Wins with BlackJack!!!";
+            playerTurn = false;
+            stats.recordWin();
+            finalState = getGameState();
+
+        }else if (dealer.isBusted() || player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
             outcome = "Player Wins.";
-        } else if (player.getHand().getHandValue() < dealer.getHand().getHandValue()) {
+
+        }  else if (player.getHand().getHandValue() < dealer.getHand().getHandValue()) {
             outcome = "Dealer Wins.";
         } else {
             outcome = "It's a Draw.";

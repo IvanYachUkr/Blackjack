@@ -15,6 +15,10 @@ public class Player {
         return hand.getHandValue() > 21;
     }
 
+    public boolean isBlackJack() {
+        return hand.getHandValue() == 21;
+    }
+
     public Hand getHand() {
         return hand;
     }
